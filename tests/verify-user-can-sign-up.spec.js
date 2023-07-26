@@ -4,7 +4,7 @@ const { signUp } = require('./playwright-helpers/signup-helpers.js');
 test('Verify use can sign up a new account', async ({ page }) => {
 
     const userSignUp = new signUp(page);
-
+    //test pull request
     const randomUsername = Math.random().toString(36).substring(2,7);
     console.log(randomUsername);
     const randomPassword = Math.random().toString(36).substring(2,7);
