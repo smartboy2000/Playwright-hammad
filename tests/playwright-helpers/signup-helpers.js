@@ -1,3 +1,4 @@
+import { defineConfig } from '@playwright/test';
 
 exports.signUp = class signUp {
     /**
@@ -21,7 +22,7 @@ exports.signUp = class signUp {
     }
 
     async gotoSite() {
-        await this.page.goto('https://www.demoblaze.com/index.html');
+        await this.page.goto('/');
     }
 
     async signUpNewUser(username,password){
