@@ -43,6 +43,7 @@ exports.signUp = class signUp {
         await this.loginUsername.fill(username);
         await this.loginPassword.fill(password);
         await this.loginButton.click();
+        await this.welcomeText.waitFor(30000);
     }
 
 }
