@@ -45,5 +45,4 @@ exports.signUp = class signUp {
         await this.loginButton.click();
         await this.welcomeText.waitFor(30000);
     }
-
 }

@@ -20,7 +20,6 @@ test.describe('Purchase Items', () => {
     });
 
     test('Verify use can purchase item', async () => {
-
         const userPurchaseItem = new purchaseItem(page);
         await userPurchaseItem.addFirstProductToCart();
         await userPurchaseItem.gotoCart();
