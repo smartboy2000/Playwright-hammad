@@ -25,8 +25,9 @@ test.describe('Purchase Items', () => {
         const userPurchaseItem = new purchaseItem(page);
         await userPurchaseItem.addFirstProductToCart();
         await userPurchaseItem.gotoCart();
-        const totalAmountText = userPurchaseItem.totalAmount;
-        await expect(userPurchaseItem.totalAmount).toEqual(totalAmountText);
+        const totalAmountText = await userPurchaseItem.totalAmount.textContent();
+        console.log(totalAmountText);
+        await expect(userPurchaseItem.totalAmount).toHaveText(totalAmountText);
         await userPurchaseItem.placeOrder();
         await expect(userPurchaseItem.placeOrderFormSuccessfullyPurchasedPopup).toHaveText('Thank you for your purchase!');
     });

@@ -32,6 +32,11 @@ exports.purchaseItem = class purchaseItem {
 
     async gotoCart(){
         await this.clickCartMenu.click();
+        //await this.totalAmount.isVisible();
+        await this.totalAmount.waitFor(30000);
+
+        
+        
     }
 
     async placeOrder(){
