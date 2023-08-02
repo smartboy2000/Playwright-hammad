@@ -19,6 +19,10 @@ exports.purchaseItem = class purchaseItem {
         this.placeOrderFormPurchaseBtn = page.getByRole('button', { name: 'Purchase' });
         this.placeOrderFormSuccessfullyPurchasedPopup = page.getByText('Thank you for your purchase!');
         this.placeOrderPopupOkBtn = page.getByRole('button', { name: 'OK' });
+        this.selectSecondItem = page.locator('div:nth-child(2) > .card > a');
+        this.goToHomePage = page.getByRole('link', { name: 'Home (current)' });
+        this.selectThirdItem = page.locator('div:nth-child(5) > .card > a');
+        this.deleteItemFromCart = page.locator('//*[@id="tbodyid"]/tr[1]/td[4]/a');
     }
 
     async addFirstProductToCart() {
@@ -33,6 +37,35 @@ exports.purchaseItem = class purchaseItem {
     async gotoCart(){
         await this.clickCartMenu.click();
         await this.totalAmount.waitFor(30000);
+    }
+
+    async addMultipleProductsToCart(){
+        await this.goToHomePage.click();
+        await this.selectFirstItem.first().click();
+        await this.clickAddToCartBtn.click();
+        await this.page.once('dialog', dialog => {
+            console.log(`Dialog message: ${dialog.message()}`);
+            dialog.dismiss().catch(() => {});
+        });
+        await this.goToHomePage.click();
+        await this.selectSecondItem.click();
+        await this.page.once('dialog', dialog => {
+            console.log(`Dialog message: ${dialog.message()}`);
+            dialog.dismiss().catch(() => {});
+          });
+        await this.clickAddToCartBtn.click();
+        await this.goToHomePage.click();
+        await this.selectThirdItem.click()
+        await this.clickAddToCartBtn.click();
+        await this.page.once('dialog', dialog => {
+            console.log(`Dialog message: ${dialog.message()}`);
+            dialog.dismiss().catch(() => {});
+        }); 
+
+    }
+
+    async deleteProductFromtheCart(){
+        await this.deleteItemFromCart.click();
     }
 
     async placeOrder(){
