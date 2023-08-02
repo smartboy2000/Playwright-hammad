@@ -1,11 +1,9 @@
 import { test, expect } from '@playwright/test';
 const { signUp } = require('./playwright-helpers/signup-helpers.js');
 
-    //const userSignUp = new signUp(page);
 
 test.describe('Demo Sign Up Test', () => {
     
-    //let userSignUp = new signUp(page);
     let page;
 
     const randomUsername = Math.random().toString(36).substring(2,7);
