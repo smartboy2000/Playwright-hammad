@@ -1,3 +1,5 @@
+const userData = require('../playwright-constants/constants.js');
+const { expect } = require('@playwright/test');
 
 exports.purchaseItem = class purchaseItem {
     /**
@@ -70,12 +72,12 @@ exports.purchaseItem = class purchaseItem {
 
     async placeOrder(){
         await this.clickPlaceOrderBtn.click();
-        await this.placeOrderFormName.fill('Jimmyy');
-        await this.placeOrderFormCountry.fill('Canada');
-        await this.placeOrderFormCity.fill('Toronto');
-        await this.placeOrderFormCreditCard.fill('4588526658525689');
-        await this.placeOrderFormMonth.fill('July');
-        await this.placeOrderFormYear.fill('2023');
+        await this.placeOrderFormName.fill(userData.user.fullname);
+        await this.placeOrderFormCountry.fill(userData.user.country);
+        await this.placeOrderFormCity.fill(userData.user.city);
+        await this.placeOrderFormCreditCard.fill(userData.user.creditcard);
+        await this.placeOrderFormMonth.fill(userData.user.month);
+        await this.placeOrderFormYear.fill(userData.user.year);
         await this.placeOrderFormPurchaseBtn.click();
         await this.placeOrderPopupOkBtn.click();
     }
