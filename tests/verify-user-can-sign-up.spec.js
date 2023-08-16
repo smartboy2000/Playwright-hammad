@@ -24,13 +24,3 @@ test.describe('Demo Sign Up Test', () => {
         await expect(userSignUp.placeOrderFormSuccessfullyPurchasedPopup).toHaveText('Welcome ' + randomUsername);
     });
 });
-
-
-
-
-
-
-
-
-
-
