@@ -1,5 +1,7 @@
 const userData = require('../playwright-constants/constants.js');
 const { expect } = require('@playwright/test');
+const csvData = require('fs').readFileSync('D:/10P Trainings/Playwright-hammad/tests/playwright-csv-files/userData.csv', 'utf-8');
+const rows = csvData.split('\n').slice(1); // Skip header row
 
 exports.purchaseItem = class purchaseItem {
     /**
@@ -70,15 +72,37 @@ exports.purchaseItem = class purchaseItem {
         await this.deleteItemFromCart.click();
     }
 
+    //** Method for reading data from CSV file **//
+    //-------------------------------------------//
+
     async placeOrder(){
-        await this.clickPlaceOrderBtn.click();
-        await this.placeOrderFormName.fill(userData.user.fullname);
-        await this.placeOrderFormCountry.fill(userData.user.country);
-        await this.placeOrderFormCity.fill(userData.user.city);
-        await this.placeOrderFormCreditCard.fill(userData.user.creditcard);
-        await this.placeOrderFormMonth.fill(userData.user.month);
-        await this.placeOrderFormYear.fill(userData.user.year);
-        await this.placeOrderFormPurchaseBtn.click();
-        await this.placeOrderPopupOkBtn.click();
+        for (const row of rows)
+        {
+            const [fullname, country, city, creditcard, month, year] = row.split(',');
+            await this.clickPlaceOrderBtn.click();
+            await this.placeOrderFormName.fill('fullname', fullname);
+            await this.placeOrderFormCountry.fill('country', country);
+            await this.placeOrderFormCity.fill('city', city);
+            await this.placeOrderFormCreditCard.fill('creditcard', creditcard);
+            await this.placeOrderFormMonth.fill('monthe', month);
+            await this.placeOrderFormYear.fill('year', year);
+            await this.placeOrderFormPurchaseBtn.click();
+            await this.placeOrderPopupOkBtn.click();
+        }
     }
+
+    //** Method for reading data from Constants file **//
+    //-------------------------------------------------//
+
+    // async placeOrder(){
+    //     await this.clickPlaceOrderBtn.click();
+    //     await this.placeOrderFormName.fill(userData.user.fullname);
+    //     await this.placeOrderFormCountry.fill(userData.user.country);
+    //     await this.placeOrderFormCity.fill(userData.user.city);
+    //     await this.placeOrderFormCreditCard.fill(userData.user.creditcard);
+    //     await this.placeOrderFormMonth.fill(userData.user.month);
+    //     await this.placeOrderFormYear.fill(userData.user.year);
+    //     await this.placeOrderFormPurchaseBtn.click();
+    //     await this.placeOrderPopupOkBtn.click();
+    // }
 }
