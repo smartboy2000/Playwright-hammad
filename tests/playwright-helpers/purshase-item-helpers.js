@@ -1,6 +1,7 @@
 const userData = require('../playwright-constants/constants.js');
 const { expect } = require('@playwright/test');
 const csvData = require('fs').readFileSync('D:/10P Trainings/Playwright-hammad/tests/playwright-csv-files/userData.csv', 'utf-8');
+//add path to playwright folder
 const rows = csvData.split('\n').slice(1); // Skip header row
 
 exports.purchaseItem = class purchaseItem {
@@ -27,6 +28,7 @@ exports.purchaseItem = class purchaseItem {
         this.goToHomePage = page.getByRole('link', { name: 'Home (current)' });
         this.selectThirdItem = page.locator('div:nth-child(5) > .card > a');
         this.deleteItemFromCart = page.locator('//*[@id="tbodyid"]/tr[1]/td[4]/a');
+        //use stable assertions
     }
 
     async addFirstProductToCart() {
@@ -40,7 +42,7 @@ exports.purchaseItem = class purchaseItem {
 
     async gotoCart(){
         await this.clickCartMenu.click();
-        await this.totalAmount.waitFor(30000);
+        await this.totalAmount.waitFor(30000); //use wait functions
     }
 
     async addMultipleProductsToCart(){
