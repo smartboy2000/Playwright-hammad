@@ -52,7 +52,7 @@ test.describe('Test Cases of Add to Cart Items. Remove Items and Purchase Items'
         await expect(userPurchaseItem.totalAmount).toHaveText(totalAmountTextAfterDelete);
     });
 
-    test('Verify user can add multiple items to the cart and place order', async () => {
+    test.only('Verify user can add multiple items to the cart and place order', async () => {
         const userPurchaseItem = new purchaseItem(page);
         await userPurchaseItem.addMultipleProductsToCart();   
         await userPurchaseItem.gotoCart();

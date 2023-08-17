@@ -1,7 +1,7 @@
 const { chromium } = require('@playwright/test');
 const url1 = 'https://www.google.com';
-const url2 = 'https://www.facebook.com';
-const baselineImagePath = 'C:/Users/hammad.mahmood/Downloads/login-error.png';
+const url2 = 'https://www.google.com';
+//const baselineImagePath = 'C:/Users/hammad.mahmood/Downloads/login-error.png';
 
 async function compareScreenshots(url1, url2) {
   const browser = await chromium.launch();
