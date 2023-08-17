@@ -7,8 +7,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@playwright/test": "^1.36.2",
-    "allure-playwright": "^2.4.0"
+    "allure-playwright": "^2.4.0",
+    "luxon": "^3.4.0",
+    "rimraf": "^5.0.1"
   },
   "directories": {
     "test": "tests"
