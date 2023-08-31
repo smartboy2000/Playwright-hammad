@@ -1,4 +1,4 @@
-# Playwright-hammad
+# Playwright-Olufemi
 
 "playwright-helpers" foldder contains all the files having locators and helper functions.
 The "test" files starts with "verify" are place directly into the "tests" folder.
